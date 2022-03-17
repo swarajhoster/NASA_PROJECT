@@ -9,6 +9,8 @@ const Launch = props => {
     );
   }, [props.planets]);
 
+  console.log(props.planets, "props ")
+
   const today = new Date().toISOString().split("T")[0];
 
   return <Appear id="launch" animate show={props.entered}>
