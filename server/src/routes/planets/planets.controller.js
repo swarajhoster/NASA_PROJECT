@@ -1,6 +1,4 @@
-const { planets } = require("../../models/planets.model");
-
-function getAllPlanets(req, res) {
+function httpGetAllPlanets(req, res) {
    res.status(200).json([
      {
        kepid: "11768142",
@@ -414,5 +412,5 @@ function getAllPlanets(req, res) {
 }
 
 module.exports = {
-  getAllPlanets,
+  httpGetAllPlanets,
 };

@@ -4,6 +4,8 @@ const cors = require("cors");
 const morgan = require("morgan");
 
 const planetsRouter = require("./routes/planets/planets.route.js");
+const launchesRouter = require("./routes/launches/launches.route.js");
+
 const app = express();
 
 //Cors Setup
@@ -19,13 +21,18 @@ var corsOptions = {
 };
 
 // App Uses
+// app.use(cors(corsOptions));
 app.use(cors());
 app.use(morgan("combined"));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", "public")));
 
-app.use(planetsRouter);
-app.get("/", (req, res) => {
+//App routes
+app.use("/planets", planetsRouter);
+app.use("/launches", launchesRouter);
+
+//React-build optimization
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
